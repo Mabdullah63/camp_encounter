@@ -2,20 +2,19 @@
 <html>
 <head>
   <style>
-    .container1{
+    .container1
+    {
       display: flex;
       flex-direction: column;
       justify-items: space-between;
       align-items: center;
       margin: auto;
     }
-    .container1_item{
+    .container1_item
+    {
       width: 500px;
       height: 100px;
     }
-    /*.country_select_height{
-      height: 50px;
-    }*/
   </style>
 </head>
   <body>
@@ -26,18 +25,15 @@
           <p1>Please Sign-in or Create an Account</p1>
         </center></div>
       <div class="card-body container1">
-
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field form-group container1_item">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email",class:'form-control',required: true %>
           </div>
-
           <div class="field form-group container1_item">
             <%= f.label :password %><br />
             <%= f.password_field :password, autocomplete: "current-password",class:'form-control',required: true %>
           </div>
-
           <% if devise_mapping.rememberable? %>
             <div class="field">
               <%= f.check_box :remember_me %>
