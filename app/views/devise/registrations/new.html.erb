@@ -2,10 +2,33 @@
 <html>
 <head>
   <style>
-/*    .Name {display: inline-block; width:49%;}
-    .Name .cf-medium {width:130%;}
-    .Name label {display: block !important; width: 150% !important;}*/
-
+    .container1 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .container2{
+      display: flex;
+      flex-direction: column;
+      float: left;
+      justify-items: space-between;
+      /*align-items: center;*/
+      margin-left: 75px;
+    }
+    .container3{
+      display: flex;
+      flex-direction: column;
+      float: right;
+      justify-content: space-between;
+      margin-right: 90px;
+    }
+    .item{
+      width: 500px;
+    }
+    .container1_item{
+      width: 500px;
+    }
   </style>
 </head>
   <body>
@@ -18,45 +41,73 @@
     <div class="card-body">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="field form-group">
-        <%=f.label :first_name %>
-        <%= f.text_field :first_name, class: 'form-control',placeholder:"First Name" %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, class: 'form-control',placeholder:"Last Name" %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control',placeholder:"Email" %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :country %>
-        <%= f.country_select :country, class: 'form-control',prompt:"Select Country" %>
-      </div>
-      <div class="field form-group">
-        <%= f.label :phone %>
-        <%= f.text_field :phone, class: 'form-control',placeholder:"70 123 4567" %>
-      </div>
-      <div class="field form-group">
-        <% f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control',placeholder:"Password" %>
-      </div>
+      <!-- <div class="field form-group container1 ">
+        <div class="container2 container1_item">
 
-      <div class="field form-group">
-        <% f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control',placeholder:"Password Confirmation" %>
-      </div></br>
-      <div class="actions">
-        <%= f.submit "Sign up", class:"btn btn-secondary" %>
+
+        </div>
+        <div class="container2 container1_item" margin-right:"100px">
+
+        </div>
+      </div> -->
+
+      <div class="field form-group container2 item">
+         <%=f.label :"First/Given Name" %>
+          <%= f.text_field :first_name, class: 'form-control',placeholder:"First Name",required: true%>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control',placeholder:"Email",required: true %>
+
+        <%= f.label :"Phone Number "%>
+        <%= f.text_field :phone, class: 'form-control',placeholder:"70 123 4567",required: true %>
+
+         <%= f.label :password %>
+       <!--  <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br /> -->
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control',placeholder:"Password",required: true %>
       </div>
-      <% end %>
+      <div class="field form-group container3 item">
+         <%= f.label :"Last Name" %>
+          <%= f.text_field :last_name, class: 'form-control',placeholder:"Last Name" ,required: true%>
+        <%= f.label :country %>
+        <%= f.country_select :country, class: 'form-control',prompt:"Select",required: true%>
+
+        <%= f.label :"Country Code" %>
+        <%= f.text_field :country_code, class: 'form-control',placeholder:" 92 " ,required: true%>
+
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control',placeholder:"Password Confirmation",required: true %>
+      </div></br>
 
     </div>
-  </div>
-  <%= render "devise/shared/links" %>
+  </div></br>
+
+  <p>
+    By voluntarily registering on this site, you consent to:
+    </br>
+    (i) the collection, use and disclosure by the XYZ Institutions of your personal information, including your personal health information for the purposes of: (a) institutional planning to assist with the creation (b) notification and/or delivery of other programs and services (c) statistical analysis necessary to further assist  (d) planning of or response to a natural disaster or other event deemed to be an emergency (collectively, the "Purposes"); and (ii) being contacted by the XYZ Institutions for reasons related to the Purposes. For more information please review our <a href="https://ge-stage-2019.herokuapp.com/privacy_policy">Privacy Policy</a> *
+  </p>
+  <span>
+    <%= link_to "Back to Sign-in", new_session_path(resource_name),class:"btn btn-outline-success" %>
+  </span>
+  <span class="actions ">
+    <%= f.submit "Sign up", class:"btn btn-success" %>
+  </span>
+  <% end %></br></br>
+
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    I Agree
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+  <label class="form-check-label" for="flexRadioDefault2">
+    I Don't Agree
+  </label>
+</div>
+  <%render "devise/shared/links" %>
   </body>
 </html>
