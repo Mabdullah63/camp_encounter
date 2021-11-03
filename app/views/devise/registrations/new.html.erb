@@ -20,11 +20,11 @@
     </div>
     <div class="field form-group container3 item">
       <%= f.label :"Last Name" %>
-      <%= f.text_field :last_name, class: 'form-control', placeholder:"Last Name" ,required: true%>
+      <%= f.text_field :last_name, class: 'form-control', placeholder:"Last Name" , required: true%>
       <%= f.label :country %>
       <%= f.country_select :country, class: 'form-control', prompt:"Select",required: true%>
       <%= f.label :"Country Code" %>
-      <%= f.text_field :country_code, class: 'form-control', placeholder:" 92 " ,required: true%>
+      <%= f.text_field :country_code, class: 'form-control', placeholder:" 92 " , required: true%>
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder:"Password Confirmation", required: true %>
     </div></br>
