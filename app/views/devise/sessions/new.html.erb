@@ -8,11 +8,11 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field form-group container_sign_in_item">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control', required: true %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', required: true %>
     </div>
     <div class="field form-group container_sign_in_item">
       <%= f.label :password %><br />
-      <%= f.password_field :password, autocomplete: "current-password", class:'form-control', required: true %>
+      <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', required:  true %>
     </div>
     <% if devise_mapping.rememberable? %>
       <div class="field">
@@ -22,7 +22,7 @@
     <% end %>
     </br>
     <div class="actions container_sign_in_item">
-      <%= f.submit "Log in", class:'btn btn-success'%>
+      <%= f.submit "Log in", class: 'btn btn-success'%>
     </div>
     <% end %>
   </div>
