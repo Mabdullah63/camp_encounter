@@ -7,6 +7,10 @@ class Admins::UsersController < AdminsController
     else
       @pagy, @users = pagy(User.all.order(:id))
     end
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    end
   end
   def destroy
     @user = User.find(params[:id])

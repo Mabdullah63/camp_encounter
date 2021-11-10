@@ -1,6 +1,7 @@
+require 'csv'
+
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
   include PgSearch::Model
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
@@ -28,5 +29,17 @@ class User < ApplicationRecord
 
   def set_default_role
     self.role ||= USER
+  end
+
+  def self.to_csv
+    attributes = %w{id first_name last_name email created_at country_code phone country }
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |user|
+        csv << user.attributes.values_at(*attributes)
+      end
+    end
   end
 end
