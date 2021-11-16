@@ -1,0 +1,36 @@
+<h3>
+  <center>
+    Hello <%= current_user.first_name %> (<%= current_user.email %>) Welocome to Camp Encounter
+    </br>
+    List Of Registered Users Given Below
+  </center>
+</h3></br>
+<div class="d-flex justify-content-between">
+  <%= form_with(url: admins_users_path, method: :get) do |f| %>
+  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name, Email, country, or phone', size: '35' %>
+  <%= f.submit "Search", class: 'btn btn-dark' %>
+  <% end %>
+  <%= link_to 'Export CSV', admins_users_path(format: :csv), class: 'btn btn-dark' %>
+</div></br>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th><%= link_to 'First Name', admins_users_path(sorting_column: "first_name", sort_type: get_sort_type('first_name')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Last Name', admins_users_path(sorting_column: "last_name", sort_type: get_sort_type('last_name')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Email', admins_users_path(sorting_column: "email", sort_type: get_sort_type('email')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'phone No', admins_users_path(sorting_column: "phone", sort_type: get_sort_type('phone')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Country Code', admins_users_path(sorting_column: "country_code", sort_type: get_sort_type('country_code')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Country', admins_users_path(sorting_column: "country", sort_type: get_sort_type('country')), class: 'btn btn-outline-light' %></th>
+      <th colspan="3"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render 'users', users: @users %>
+  </tbody>
+</table>
+<center>
+  <div>
+    <%= pagy_bootstrap_nav(@pagy).html_safe %></br>
+  </div>
+</center>
+<br><br><br>
