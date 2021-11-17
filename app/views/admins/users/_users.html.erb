@@ -1,0 +1,18 @@
+<% users.each do |user| %>
+  <tr>
+    <td><%= user.first_name %></td>
+    <td><%= user.last_name %></td>
+    <td><%= user.email %></td>
+    <td><%= user.phone %></td>
+    <td><%= user.country_code %></td>
+    <td><%= user.country %></td>
+    <td><%= link_to 'View', admins_user_path(user), class: "btn btn-outline-dark btn-sm" %></td>
+    <%if !user.admin? %>
+      <td><%= link_to 'Edit', edit_admins_user_path(user), class: 'btn btn-outline-warning' %></td>
+    <% end %>
+    <% if user.role == 'user' %>
+      <td><%= link_to 'Destroy', admins_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+    <% end %>
+
+  </tr>
+<% end %>
