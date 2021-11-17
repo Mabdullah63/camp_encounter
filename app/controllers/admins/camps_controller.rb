@@ -5,6 +5,8 @@ class Admins::CampsController < AdminsController
   def index
     if params[:query].present?
       @camps = Camp.search(params[:query]).order(:id)
+    elsif params[:sorting_column].present?
+      @camps = Camp.all.order(params[:sorting_column] + " " +  params[:sort_type])
     else
       @camps = Camp.all.order(:id)
     end

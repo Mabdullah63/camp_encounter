@@ -1,6 +1,5 @@
-module UsersHelper
+module SortingHelper
   def get_sort_type(field)
-    # byebug
     if field == params[:sorting_column]
       if params[:sort_type] == "asc"
         return "desc"
