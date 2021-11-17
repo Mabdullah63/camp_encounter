@@ -1,0 +1,24 @@
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col-lg-8 col-xl-6">
+    <div class="card rounded-3">
+        <center><h2>Location Info</h2></center>
+      <div class="card-body p-4 p-md-5 bg-light">
+        <hr>
+        <table class="table table-striped table-bordered table-hover">
+          <thead class="table-dark">
+            <div class"justify-content-center"><th colspan="2"><%= @location.id%></th></div>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Name</th>
+              <td><%= @location.name %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%if !current_user.user? %>
+          <%= link_to 'Edit', edit_admins_location_path(@location), class: 'btn btn-outline-warning' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

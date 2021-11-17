@@ -1,5 +1,5 @@
 class Admins::CampsController < AdminsController
-  before_action :set_camp, only: %i[ show edit update destroy ]
+  before_action :set_camp, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   def index
