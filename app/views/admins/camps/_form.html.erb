@@ -1,0 +1,52 @@
+<%= form_with(url: admins_camps_path, model: camp) do |f| %>
+  <% if camp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
+      <ul>
+        <% camp.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row d-flex justify-content-center">
+    <div class="card rounded-3">
+      <center><h2> Add Camp</h2></center>
+      <div class="card-body p-4 p-md-5 bg-light">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, autofocus: true, placeholder: "name", size:"25" %>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <%= f.label :type %><br />
+              <%= f.select :cam_type, ['virtual','luxury'], autofocus: true, prompt: "select type", size: "25" %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <%= f.label :"start date" %><br />
+                <%= f.datetime_select :start_date, autofocus: true, placeholder: "start date", size:"25" %>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+              <%= f.label :"end date" %><br />
+              <%= f.datetime_select :end_date, autofocus: true, placeholder: "end date", size: "25" %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+          <%= link_to 'Back', admins_camps_path, class: "btn btn-dark" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
