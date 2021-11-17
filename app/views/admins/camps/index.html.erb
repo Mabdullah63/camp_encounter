@@ -5,9 +5,13 @@
     List Of Available Camps Given Below
   </center>
 </h3></br>
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-between">
+  <%= form_with(url: admins_camps_path, method: :get) do |f| %>
+  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name, Start Date, End Date Type', size: '37' %>
+  <%= f.submit "Search", class: 'btn btn-dark' %>
+  <% end %>
   <%= link_to 'add new camp', new_admins_camp_path, class: "btn btn-dark " %>
-</div>
+</div></br>
 <table class="table table-striped table-bordered table-hover">
   <thead class="table-dark">
     <tr>

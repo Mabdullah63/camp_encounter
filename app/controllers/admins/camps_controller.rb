@@ -3,7 +3,11 @@ class Admins::CampsController < AdminsController
   before_action :authenticate_user!
 
   def index
-    @camps = Camp.all.order(:id)
+    if params[:query].present?
+      @camps = Camp.search(params[:query]).order(:id)
+    else
+      @camps = Camp.all.order(:id)
+    end
   end
 
   def show
