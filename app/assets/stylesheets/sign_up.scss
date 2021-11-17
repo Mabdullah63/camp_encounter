@@ -1,0 +1,39 @@
+.container2
+{
+  display: flex;
+  flex-direction: column;
+  float: left;
+  justify-content: space-between;
+  margin-left: 50px;
+}
+
+.container3{
+  display: flex;
+  flex-direction: column;
+  float: right;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.containerl
+{
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.containerl_item
+{
+  width: 500px;
+  height: 100px;
+}
+
+.item{
+  width: 500px;
+}
+
+.container1_item{
+  width: 500px;
+}
