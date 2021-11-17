@@ -1,0 +1,34 @@
+<h3>
+  <center>
+    Hello <%= current_user.first_name %> (<%= current_user.email %>) Welocome to Camp Encounter
+    </br>
+    List Of Available Camps Given Below
+  </center>
+</h3></br>
+<div class="d-flex justify-content-between">
+  <%= form_with(url: admins_camps_path, method: :get) do |f| %>
+  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name, Start Date, End Date Type', size: '37' %>
+  <%= f.submit "Search", class: 'btn btn-dark' %>
+  <% end %>
+  <%= link_to 'add new camp', new_admins_camp_path, class: "btn btn-dark " %>
+</div></br>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th><%= link_to 'Name', admins_camps_path(sorting_column: "name", sort_type: get_sort_type('name')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Type', admins_camps_path(sorting_column: "camp_type", sort_type: get_sort_type('camp_type')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Start Date', admins_camps_path(sorting_column: "start_date", sort_type: get_sort_type('start_date')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'End Date', admins_camps_path(sorting_column: "end_date", sort_type: get_sort_type('end_date')), class: 'btn btn-outline-light' %></th>
+      <th><%= link_to 'Locations', admins_camps_path, class: 'btn btn-outline-light' %></th>
+      <th>Camp Id</th>
+      <th colspan="3"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render 'camps', camps: @camps %>
+  </tbody>
+</table>
+<center>
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+</center>
+<br><br><br>

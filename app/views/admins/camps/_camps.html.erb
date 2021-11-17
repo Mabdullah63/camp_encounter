@@ -1,0 +1,19 @@
+<% camps.each do |camp| %>
+  <tr>
+    <td><%= camp.name %></td>
+    <td><%= camp.camp_type %></td>
+    <td><%= camp.start_date %></td>
+    <td><%= camp.end_date %></td>
+    <td><% camp.locations.each do |l|%>
+      <%= l.name %>
+      <%= "|" %>
+      <%end%>
+    </td>
+    <td><%= camp.id %></td>
+    <td><%= link_to 'View', admins_camp_path(camp), class: "btn btn-outline-dark btn-sm" %></td>
+    <%if current_user.admin? %>
+      <td><%= link_to 'Edit', edit_admins_camp_path(camp), class: 'btn btn-outline-warning' %></td>
+      <td><%= link_to 'Destroy', admins_camp_path(camp), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+    <% end %>
+  </tr>
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_with(model: @location, url: admins_location_path) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+      <ul>
+        <% @location.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="card rounded-3">
+      <center><h2> Edit Location</h2></center>
+      <div class="card-body p-4 p-md-5 bg-light">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, autofocus: true, placeholder: "name", size:"25" %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+          <%= link_to 'Back', admins_locations_path, class: "btn btn-dark" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

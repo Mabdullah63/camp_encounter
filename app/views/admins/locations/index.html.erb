@@ -1,0 +1,30 @@
+<h3>
+  <center>
+    Hello <%= current_user.first_name %> (<%= current_user.email %>) Welocome to Camp Encounter
+    </br>
+    List Of Locations Given Below
+  </center>
+</h3></br>
+<div class="d-flex justify-content-between">
+  <%= form_with(url: admins_locations_path, method: :get) do |f| %>
+  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name', size: '14' %>
+  <%= f.submit "Search", class: 'btn btn-dark' %>
+  <% end %>
+  <%= link_to 'Add New Location', new_admins_location_path, class: "btn btn-dark " %>
+</div></br>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th><%= link_to 'Name', admins_locations_path(sorting_column: "name", sort_type: get_sort_type('name')), class: 'btn btn-outline-light' %></th>
+      <th>Location Id</th>
+      <th colspan="3"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render 'locations', locations: @locations %>
+  </tbody>
+</table>
+<center>
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+</center>
+<br><br><br>
