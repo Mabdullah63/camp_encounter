@@ -28,4 +28,7 @@
     <%= render 'camps', camps: @camps %>
   </tbody>
 </table>
+<center>
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
+</center>
 <br><br><br>
