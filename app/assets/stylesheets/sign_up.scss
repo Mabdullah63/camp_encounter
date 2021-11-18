@@ -1,5 +1,4 @@
-.container2
-{
+.align-left {
   display: flex;
   flex-direction: column;
   float: left;
@@ -7,7 +6,7 @@
   margin-left: 50px;
 }
 
-.container3{
+.align-right {
   display: flex;
   flex-direction: column;
   float: right;
@@ -15,8 +14,7 @@
   margin-right: 50px;
 }
 
-.containerl
-{
+.container-left {
   display: flex;
   flex-direction: column;
   justify-items: space-between;
@@ -24,16 +22,11 @@
   margin: auto;
 }
 
-.containerl_item
-{
+.container-left-item {
   width: 500px;
   height: 100px;
 }
 
-.item{
-  width: 500px;
-}
-
-.container1_item{
+.item {
   width: 500px;
 }
