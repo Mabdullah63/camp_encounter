@@ -3,7 +3,7 @@ class CampsController < ApplicationController
 
   # GET /camps or /camps.json
   def index
-    @camps = Camp.all
+    @camps = Camp.all.order(:id)
   end
 
   # GET /camps/1 or /camps/1.json
@@ -64,6 +64,6 @@ class CampsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def camp_params
-      params.require(:camp).permit(:name, :start_date, :end_date, :type)
+      params.require(:camp).permit(:name, :start_date, :end_date, :camp_type)
     end
 end

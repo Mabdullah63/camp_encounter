@@ -1,24 +1,34 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @camp.name %>
-</p>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @camp.start_date %>
-</p>
 
-<p>
-  <strong>End date:</strong>
-  <%= @camp.end_date %>
-</p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @camp.type %>
-</p>
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="col-lg-8 col-xl-7">
+    <div class="card rounded-3">
+      <center><h2>Camp Intro Page</h2></center>
+      <div class="card-body p-4 p-md-4 bg-light">
+        <hr>
+        <p>
+          Welcome and thank you for applying to be a participant at CONNECT . CONNECT is an international programme for students ages 14 to 17 from around the world which takes place in partnership.
+        </p>
+        <p>
+          The purpose of this application is for the CONNECT Placement Team to get to know you and learn about your interests, passions, and motivations for registering. Before registering, we encourage you to visit our website and learn more about our offerings and the registration process.
+        </p>
+        <p>
+          This registration form is for both CONNECT camps that will take place during July 2022:
+          CONNECT Cycle A: 1:30 AM GMT to 7:30 AM GMT
+          CONNECT Cycle B: 11:30 AM GMT to 5:30 PM GMT
+        </p>
+        <p>
+          If you have any questions during the application process, please feel free to email  at info@projectname.com.
+        </p>
+        <p>
+          I AKNOWLEDGE AND AGREE THAT ANY INFORMATION PROVIDED IN THIS APPLICATION WILL BE COLLECTED AND PROCESSED IN ACCORDANCE WITH THE <%= link_to "PRIVACY POLICY", "https://ge-stage-2019.herokuapp.com/privacy_policy" %>.</p>
+        </p>
+          <%= @camp.name %><div></div>
+          <%= link_to 'Back', camps_path, class: "btn btn-outline-dark" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_camp_path(@camp) %> |
-<%= link_to 'Back', camps_path %>

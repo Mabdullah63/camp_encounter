@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
+  resources :camps, except: :edit
   namespace :admins do
     resources :users
     resources :camps
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
       root 'users/registrations#new', as: :unauthenticated_root
     end
     authenticated do
-      root 'home#index'
+      root 'camps#index'
     end
   end
 end
