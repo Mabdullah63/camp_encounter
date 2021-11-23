@@ -22,6 +22,8 @@ gem 'country_select', '~> 4.0'
 gem 'pagy', '~> 5.1', '>= 5.1.3'
 gem 'pg_search'
 gem 'mailcatcher'
+
+gem 'wicked'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

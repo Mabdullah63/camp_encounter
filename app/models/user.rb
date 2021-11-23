@@ -3,6 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include PgSearch::Model
 
+  has_many :user_applications
+  has_many :camps, through: :user_applications
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
 
   # validates :first_name, presence: true, length: { minimum: 2 }, format: { with: /\A[a-zA-Z]+\z/, message: "only accept letters" }
@@ -18,9 +21,9 @@ class User < ApplicationRecord
                   using: {
                     tsearch: { prefix: true, any_word: true}
                   }
-  ADMIN = :admin
-  USER = :user
-  SUPER_ADMIN = :superadmin
+  ADMIN = :admin.freeze
+  USER = :user.freeze
+  SUPER_ADMIN = :superadmin.freeze
   ROLES = [USER, SUPER_ADMIN, ADMIN]
   enum role: ROLES
 

@@ -2,6 +2,8 @@ class Camp < ApplicationRecord
   include PgSearch::Model
 
   has_and_belongs_to_many :locations
+  has_many :user_applications
+  has_many :users, through: :user_applications
 
   validate :check_end_date?
 

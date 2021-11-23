@@ -1,0 +1,40 @@
+<%= render 'progress', user_application: @user_application %>
+
+<%= form_with(model: @user_application, url: wizard_path, method: :put, local: true) do |f| %>
+  <% if @user_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_application.errors.count, "error") %> prohibited this User Application from being updated:</h2>
+      <ul>
+        <% @user_application.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="card rounded-3">
+      <center><h2> Step Five</h2></center>
+      <div class="card-body p-4 p-md-5 bg-light">
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <div class="field">
+                  <%= f.label :Dinner %><br />
+                  <%= f.label :Dinner, "Yes", value: true  %>
+                  <%= f.radio_button :Dinner, true %>
+                  <%= f.label :Dinner, "No", value: false %>
+                  <%= f.radio_button :Dinner, false, checked: true %>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-success" %>
+          <%#= link_to 'Back', admins_camps_path, class: "btn btn-dark" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+

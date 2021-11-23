@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  resources :camps, except: :edit
+  resources :user_applications
+  resources :camps do
+    post 'start_application', on: :member
+  end
+
   namespace :admins do
     resources :users
     resources :camps
