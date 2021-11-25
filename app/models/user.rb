@@ -11,9 +11,9 @@ class User < ApplicationRecord
   # validates :email, uniqueness: true, format: { with: /(?:\d{10}|\w+@\w+\.\w{2,3})/, message: "Enter valid Email" }
   # validates :password, format: { with: /(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}/, message: " Password must contain at least (1) special character, (1) uppercase letter, (8) characters long." }
 
-  ADMIN = :admin
-  USER = :user
-  SUPER_ADMIN = :superadmin
+  ADMIN = :admin.freeze
+  USER = :user.freeze
+  SUPER_ADMIN = :superadmin.freeze
   ROLES = [USER, SUPER_ADMIN, ADMIN]
   enum role: ROLES
 
