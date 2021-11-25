@@ -1,59 +1,75 @@
 <div class="row d-flex justify-content-center align-items-center h-100">
-  <div class="col-lg-8 col-xl-6">
+  <div class="col-lg-8 col-xl-9">
     <div class="card rounded-3">
-        <center><h2>Start Application</h2></center>
+        <center><h2>Dashboard</h2></center>
+        <% if @user_application.progress_bar < 100 %>
+          <h2 class="m-3">
+            <%byebug%>
+            <%= "#{current_user.first_name} #{current_user.last_name} You Have Completed  #{@user_application.progress_bar} of Your Application" %>
+          </h2>
+        <% end %>
       <div class="card-body p-4 p-md-5 bg-light">
         <hr>
-        <table class="table table-striped table-bordered table-hover">
-          <thead class="table-dark">
-            <tr>
-              <th>Steps</th>
-              <th>Enroll</th>
-            </tr>
-          </thead>
-          <tbody>
+        <% if @user_application.progress_bar < 100  %>
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
               <tr>
-                <td>Step One</td>
-                <td><%= link_to "One", user_application_path(:step_one), class: 'btn btn-outline-dark' %></td>
+                <th>Steps</th>
+                <th>Enroll</th>
               </tr>
-              <tr>
-                <td>Step Two</td>
-                <td><%= link_to "Two", user_application_path(:step_two), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Three</td>
-                <td><%= link_to "Three", user_application_path(:step_three), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Four</td>
-                <td><%= link_to "Four", user_application_path(:step_four), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Five</td>
-                <td><%= link_to "Five", user_application_path(:step_five), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Six</td>
-                <td><%= link_to "Six", user_application_path(:step_six), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Seven</td>
-                <td><%= link_to "Seven", user_application_path(:step_seven), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Eight</td>
-                <td><%= link_to "Eight", user_application_path(:step_eight), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Nine</td>
-                <td><%= link_to "Nine", user_application_path(:step_nine), class: 'btn btn-outline-dark' %></td>
-              </tr>
-              <tr>
-                <td>Step Ten</td>
-                <td><%= link_to "Ten", user_application_path(:step_ten), class: 'btn btn-outline-dark' %></td>
-              </tr>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>Step One</td>
+                  <td><%= link_to "One", user_application_path(:step_one), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Two</td>
+                  <td><%= link_to "Two", user_application_path(:step_two), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Three</td>
+                  <td><%= link_to "Three", user_application_path(:step_three), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Four</td>
+                  <td><%= link_to "Four", user_application_path(:step_four), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Five</td>
+                  <td><%= link_to "Five", user_application_path(:step_five), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Six</td>
+                  <td><%= link_to "Six", user_application_path(:step_six), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Seven</td>
+                  <td><%= link_to "Seven", user_application_path(:step_seven), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Eight</td>
+                  <td><%= link_to "Eight", user_application_path(:step_eight), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Nine</td>
+                  <td><%= link_to "Nine", user_application_path(:step_nine), class: 'btn btn-outline-dark' %></td>
+                </tr>
+                <tr>
+                  <td>Step Ten</td>
+                  <td><%= link_to "Ten", user_application_path(:step_ten), class: 'btn btn-outline-dark' %></td>
+                </tr>
+            </tbody>
+          </table>
+        <% else %>
+          <center>
+            <div>
+              Your Application for <%= Camp.find(@user_application.camp_id).name %> is successfully submitted
+            </div>
+          </center>
+          <%= render 'progress', user_application: @user_application %>
+          <%= link_to "Submit Another Application", camps_path, class: 'btn btn-outline-dark' %>
+        <% end %>
       </div>
     </div>
   </div>

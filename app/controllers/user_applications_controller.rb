@@ -1,12 +1,14 @@
 class UserApplicationsController < ApplicationController
   include Wicked::Wizard
-  before_action :set_user_application
+  before_action :set_application
   before_action :check_progress, only: [:update]
   after_action :progress_bar, only: [:update]
 
-  steps :step_one, :step_two, :step_three, :step_four, :step_five, :step_six, :step_seven, :step_eight, :step_nine, :step_ten
+  steps :step_one, :step_two, :step_three, :step_four, :step_five, :step_six, :step_seven, :step_eight, :step_nine, :step_ten, :index
 
-  def index; end
+  def index
+    #@user_application = UserApplication.find_by(user_id: current_user.id, camp_id: params[:camp_id])
+  end
 
   def show
     render_wizard
@@ -21,13 +23,13 @@ class UserApplicationsController < ApplicationController
 
   def progress_bar
     if wizard_steps.any? && wizard_steps.index(step).present?
-      @user_application.progress_bar = ((wizard_steps.index(step) ).to_d / (wizard_steps.count.to_d - 1)) * 100
+      @user_application.progress_bar = ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100
       @user_application.save
     end
   end
 
-  def set_user_application
-    @user_application = UserApplication.find_by_id(session[:user_application_id])
+  def set_application
+    @user_application = UserApplication.find session[:user_application_id]
   end
 
   def check_progress

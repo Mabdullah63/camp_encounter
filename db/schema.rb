@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_101603) do
+ActiveRecord::Schema.define(version: 2021_11_23_060016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(version: 2021_11_23_101603) do
     t.boolean "lunch"
     t.string "insurance"
     t.string "food_options"
-    t.string "Dinner"
+    t.string "dinner"
     t.string "medical_history"
     t.boolean "wifi_service"
     t.string "address"
     t.string "emergency_contact"
     t.string "shirt_size"
-    t.integer "progress_bar"
+    t.integer "progress_bar", default: 0
     t.index ["camp_id"], name: "index_user_applications_on_camp_id"
     t.index ["user_id"], name: "index_user_applications_on_user_id"
   end

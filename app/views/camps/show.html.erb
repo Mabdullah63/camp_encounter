@@ -24,7 +24,7 @@
           <%= @camp.name %><div></div>
 
           <%= link_to 'Back', camps_path, class: "btn btn-outline-dark" %>
-          <%= link_to "Start Application", start_application_camp_path, method: :post %>
+          <%= link_to "Start Application", start_application_camp_path(@camp), method: :post %>
       </div>
     </div>
   </div>

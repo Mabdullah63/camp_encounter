@@ -17,6 +17,7 @@
                 <td><%= camp.name %></td>
                 <td>
                   <%if current_user.user? %>
+                    <%#byebug%>
                     <%= link_to 'Select', camp, class: 'btn btn-outline-dark' %>
                   <% end %>
                 </td>
