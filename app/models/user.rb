@@ -18,7 +18,6 @@ class User < ApplicationRecord
                     tsearch: { prefix: true, any_word: true}
                   }
   
-  
   ADMIN = :admin.freeze
   USER = :user.freeze
   SUPER_ADMIN = :superadmin.freeze
