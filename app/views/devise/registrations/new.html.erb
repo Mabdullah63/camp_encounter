@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-3">
   <div class="card-header">
     <center>
       <h3 class="center">Lets get Started</h3>
@@ -18,18 +18,18 @@
       <%= f.label "password" %>
       <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password", required: true %>
     </div>
-    <div class="field form-group align-right item">
+    <div class="field form-group align-right item mb-3">
       <%= f.label "Last Name" %>
       <%= f.text_field :last_name, class: 'form-control', placeholder: "Last Name", required: true %>
       <%= f.label "country" %>
       <%= f.country_select :country, class: 'form-control', prompt: "Select", required: true %>
       <%= f.label "Country Code" %>
-      <%= f.text_field :country_code, class: 'form-control', placeholder: " 92 ", required: true %>
+      <%= f.text_field :country_code, class: 'form-control', placeholder: "92", required: true %>
       <%= f.label "password_confirmation" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: "Password Confirmation", required: true %>
-    </div><div></div>
+    </div>
   </div>
-</div><div></div>
+</div>
 <p class="m-0">
   By voluntarily registering on this site, you consent to:
 </p>
@@ -49,7 +49,7 @@
     I Agree
   </label>
 </div>
-<div class="form-check ">
+<div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flex-radio-default2" checked>
   <label class="form-check-label" for="flex-radio-default2">I Don't Agree
   </label>
