@@ -1,0 +1,32 @@
+.align-left {
+  display: flex;
+  flex-direction: column;
+  float: left;
+  justify-content: space-between;
+  margin-left: 50px;
+}
+
+.align-right {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  justify-content: space-between;
+  margin-right: 50px;
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.container-left-item {
+  width: 500px;
+  height: 100px;
+}
+
+.item {
+  width: 500px;
+}
