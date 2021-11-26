@@ -8,16 +8,18 @@
           <thead class="table-dark">
             <tr>
               <th>Name</th>
-              <th>Enroll</th>
+              <th>View</th>
             </tr>
           </thead>
           <tbody>
-            <% @camps.each do |camp| %>
+            <% @user_applications.each do |user_application| %>
               <tr>
-                <td><%= camp.name %></td>
                 <td>
-                  <%if current_user.user? %>
-                    <%= link_to 'Select', camp, class: 'btn btn-outline-dark' %>
+                  <%= User.find(user_application.user_id).first_name+' '+User.find(user_application.user_id).last_name+' '+Camp.find(user_application.camp_id).name %>
+                </td>
+                <td>
+                  <%if current_user.admin? %>
+                    <%= link_to 'view Application', admins_user_application_path(user_application), class: 'btn btn-outline-dark' %>
                   <% end %>
                 </td>
               </tr>

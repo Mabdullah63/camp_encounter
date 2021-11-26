@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <%= link_to 'Global Encounter', root_path, class: "navbar-brand"%>
+    <%if user_signed_in? && current_user.admin? %>
+      <%= link_to 'Global Encounter', admins_users_path, class: "navbar-brand"%>
+    <% elsif user_signed_in? && current_user.user?%>
+      <%= link_to 'Global Encounter', root_path, class: "navbar-brand"%>
+    <% else %>
+      <%= link_to 'Global Encounter', new_user_registration_path, class: "navbar-brand"%>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,6 +31,9 @@
             </li>
             <li class="nav-item">
               <%= link_to 'Locations', admins_locations_path, class: "nav-link"%>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'User Applications', admins_user_applications_path, class: "nav-link"%>
             </li>
           <% end %>
         <% else %>

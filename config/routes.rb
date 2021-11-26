@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  resources :user_applications
+
+  resources :user_applications do
+    get 'view_application', on: :member
+  end
+
   resources :camps do
     post 'start_application', on: :member
   end
@@ -10,6 +14,7 @@ Rails.application.routes.draw do
     resources :users
     resources :camps
     resources :locations
+    resources :user_applications, except: [:new, :create]
   end
   devise_scope :user do
     get 'user', to: "users#show"

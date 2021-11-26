@@ -31,7 +31,8 @@
         <div></div>
         <div class="actions">
           <%= f.submit class: "btn btn-success" %>
-          <%#= link_to 'Back', admins_camps_path, class: "btn btn-dark" %>
+          <%= link_to "Skip", wizard_path(:step_eight, user_application: @user_application), class: "btn btn-info" %>
+          <%= link_to "previous", wizard_path(:step_six, user_application: @user_application), class: "btn btn-outline-dark" %>
         </div>
       </div>
     </div>

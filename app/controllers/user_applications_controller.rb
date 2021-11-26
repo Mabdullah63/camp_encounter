@@ -6,13 +6,11 @@ class UserApplicationsController < ApplicationController
 
   steps :step_one, :step_two, :step_three, :step_four, :step_five, :step_six, :step_seven, :step_eight, :step_nine, :step_ten, :index
 
-  def index
-    #@user_application = UserApplication.find_by(user_id: current_user.id, camp_id: params[:camp_id])
-  end
-
   def show
     render_wizard
   end
+
+  def view_application; end
 
   def update
     @user_application.update(user_application_params)
@@ -23,7 +21,7 @@ class UserApplicationsController < ApplicationController
 
   def progress_bar
     if wizard_steps.any? && wizard_steps.index(step).present?
-      @user_application.progress_bar = ((wizard_steps.index(step) + 1).to_d / wizard_steps.count.to_d) * 100
+      @user_application.progress_bar = ((wizard_steps.index(step) + 2).to_d / wizard_steps.count.to_d) * 100
       @user_application.save
     end
   end

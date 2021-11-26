@@ -1,0 +1,75 @@
+<section class="h-100 h-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <table class="table">
+              <thead>
+                <h3>Application</h3>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Name:</th>
+                  <td><%= "#{current_user.first_name} #{current_user.last_name}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Email:</th>
+                  <td><%= current_user.email %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Phone Number:</th>
+                  <td><%= "#{current_user.country_code} #{current_user.phone}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Gender:</th>
+                  <td><%= @user_application.gender %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Age:</th>
+                  <td><%= @user_application.age %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Lunch:</th>
+                  <td><%= @user_application.lunch %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Dinner:</th>
+                  <td><%= @user_application.dinner %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Address:</th>
+                  <td><%= @user_application.address %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Emergency Contact:</th>
+                  <td><%= @user_application.emergency_contact %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Food Type:</th>
+                  <td><%= @user_application.food_options %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Wifi Service:</th>
+                  <td><%= @user_application.wifi_service %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Medical History:</th>
+                  <td><%= @user_application.medical_history %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Insurance:</th>
+                  <td><%= @user_application.insurance %></td>
+                </tr>
+                <tr>
+                  <th scope="row">Shirt Size:</th>
+                  <td><%= @user_application.shirt_size %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

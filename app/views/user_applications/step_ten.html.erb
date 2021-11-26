@@ -11,6 +11,7 @@
       </ul>
     </div>
   <% end %>
+  <%= render 'confirmation', form: f %>
   <div class="row d-flex justify-content-center align-items-center">
     <div class="card rounded-3">
       <center><h2> Step Ten</h2></center>
@@ -24,9 +25,13 @@
           </div>
         </div>
         <div></div>
-        <div class="actions">
-          <%= f.submit class: "btn btn-success" %>
-          <%#= link_to 'Back', admins_camps_path, class: "btn btn-dark" %>
+        <div class="actions form-outline">
+          <%= link_to "previous", wizard_path(:step_nine, user_application: @user_application), class: "btn btn-outline-dark" %>
+          <% if @user_application.progress_bar >=90 %>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
+          <% else %>
+            <%= link_to "View Dashboard", wizard_path(:index), class: "btn btn-outline-dark" %>
+          <% end %>
         </div>
       </div>
     </div>

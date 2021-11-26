@@ -1,13 +1,17 @@
 <div class="row d-flex justify-content-center align-items-center h-100">
   <div class="col-lg-8 col-xl-9">
     <div class="card rounded-3">
-        <center><h2>Dashboard</h2></center>
-        <% if @user_application.progress_bar < 100 %>
-          <h2 class="m-3">
-            <%byebug%>
-            <%= "#{current_user.first_name} #{current_user.last_name} You Have Completed  #{@user_application.progress_bar} of Your Application" %>
-          </h2>
-        <% end %>
+      <center><h2>Dashboard</h2></center>
+      <% if @user_application.progress_bar < 100 %>
+        <h2 class="m-3">
+          <%= "#{current_user.first_name} #{current_user.last_name} You Have Completed  #{@user_application.progress_bar} of Your Application" %>
+        </h2>
+        <center>
+          <div>
+            <%= link_to "Continue to Complete Application", user_application_path(:step_one), class: 'btn btn-success' %>
+          </div>
+        </center>
+      <% end %>
       <div class="card-body p-4 p-md-5 bg-light">
         <hr>
         <% if @user_application.progress_bar < 100  %>
@@ -68,6 +72,7 @@
             </div>
           </center>
           <%= render 'progress', user_application: @user_application %>
+          <%= link_to "View Application", view_application_user_application_path, class: 'btn btn-outline-dark' %>
           <%= link_to "Submit Another Application", camps_path, class: 'btn btn-outline-dark' %>
         <% end %>
       </div>
