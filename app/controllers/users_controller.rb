@@ -1,11 +1,20 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_user, only: :destroy
+
   def destroy
-    @user = User.find(params[:id])
     if @user.destroy
-      respond_to do |format|
-        format.html { redirect_to admins_path, notice: "User successfully destroyed." }
-        format.json { head :no_content }
-      end
+      flash[:notice] = "User destroyed successfully"
+    else
+      flash[:error] = @user.errors.full_messages.to_sentence
     end
+
+    redirect_to admins_path
+  end
+
+  private
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end
