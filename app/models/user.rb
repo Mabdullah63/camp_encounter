@@ -19,7 +19,7 @@ class User < ApplicationRecord
                   }
   
   ADMIN = :admin.freeze
-  USER = :user.freeze
+  USER = :standard_user.freeze
   SUPER_ADMIN = :superadmin.freeze
   
   ROLES = [USER, SUPER_ADMIN, ADMIN]
