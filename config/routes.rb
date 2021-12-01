@@ -16,6 +16,12 @@ Rails.application.routes.draw do
     resources :locations
     resources :user_applications, except: [:new, :create]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :user_applications, except: [:edit, :new]
+    end
+  end
   devise_scope :user do
     get 'user', to: "users#show"
     unauthenticated do

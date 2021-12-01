@@ -6,9 +6,25 @@ before_action :correct_user, only: [:edit, :update, :destroy]
     if params[:query].present?
       @pagy, @users = pagy(User.search(params[:query]).order(:id))
     elsif params[:sorting_column].present?
-      @pagy, @users = pagy(User.all.order(params[:sorting_column] + " " +  params[:sort_type]))
+      @pagy, @users = pagy(User.all.order(params[:sorting_column] =>  params[:sort_type]))
     else
       @pagy, @users = pagy(User.all.order(:id))
+    end
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+
+    raw, enc = Devise.token_generator.generate(User, :token)
+    @user.reset_password_token = enc
+    @user.reset_password_sent_at = Time.now
+
+    if @user.save
+      InviteMailer.send_invite(@user, raw)
     end
   end
 
