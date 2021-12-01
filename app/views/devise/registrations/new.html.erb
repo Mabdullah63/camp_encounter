@@ -10,7 +10,7 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class="d-flex justify-content-around">
         <div class="field form-group item">
-          <%=f.label "First/Given Name" %>
+          <%= f.label "First/Given Name" %>
           <%= f.text_field :first_name, class: 'form-control', placeholder: "First Name", required: true %>
           <%= f.label "email" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email", required: true %>
