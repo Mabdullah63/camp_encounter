@@ -1,3 +1,5 @@
 class AdminsController < ApplicationController
-  def index; end
+  def index
+    @pagy, @users = pagy(User.order(:id))
+  end
 end
