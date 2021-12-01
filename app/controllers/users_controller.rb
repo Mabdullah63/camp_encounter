@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:destroy]
+  before_action :find_user, only: [:destroy]
 
   def destroy
     if @user.destroy
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   private
 
-  def set_user
+  def find_user
     @user = User.find(params[:id])
   end
 end
