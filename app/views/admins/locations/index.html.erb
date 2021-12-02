@@ -7,8 +7,8 @@
 </h3></br>
 <div class="d-flex justify-content-between">
   <%= form_with(url: admins_locations_path, method: :get) do |f| %>
-  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name', size: '14' %>
-  <%= f.submit "Search", class: 'btn btn-dark' %>
+    <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name', size: '14' %>
+    <%= f.submit "Search", class: 'btn btn-dark' %>
   <% end %>
   <%= link_to 'Add New Location', new_admins_location_path, class: "btn btn-dark " %>
 </div></br>

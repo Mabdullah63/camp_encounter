@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   include PgSearch::Model
+
+  attr_accessor :skip_password_validation
 
   has_many :user_applications
   has_many :camps, through: :user_applications
@@ -14,22 +14,23 @@ class User < ApplicationRecord
   # validates :country_code, presence: true, length: {minimum: 2}
   # validates :terms_of_service, acceptance: { message: 'If you do not agree to the terms and service please contact global@campencounter.com'}
   # validates :email, uniqueness: true, format: { with: /(?:\d{10}|\w+@\w+\.\w{2,3})/, message: "Enter valid Email" }
-  # validates :password, format: { with: /(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}/, message: " Password must contain at least (1) special character, (1) uppercase letter, (8) characters long." }
+  validates :password, format: { with: /(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}/, message: " Password must contain at least (1) special character, (1) uppercase letter, (8) characters long." },if: :password_required?
   #pg_search_scope :search, against: [:id, :first_name, :email]
 
   pg_search_scope :search, against: [:first_name, :last_name, :email, :created_at, :id, :country, :phone],
-                  using: {
+                   using: {
                     tsearch: { prefix: true, any_word: true}
                   }
   ADMIN = :admin.freeze
   USER = :user.freeze
   SUPER_ADMIN = :superadmin.freeze
   ROLES = [USER, SUPER_ADMIN, ADMIN]
-  enum role: ROLES
+  enum role: ROLES, _default: :user
 
-  after_initialize :set_default_role, if: :new_record?
+  protected
 
-  def set_default_role
-    self.role ||= USER
+  def password_required?
+    return false if skip_password_validation
+    super
   end
 end

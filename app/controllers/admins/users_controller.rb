@@ -18,13 +18,19 @@ before_action :correct_user, only: [:edit, :update, :destroy]
 
   def create
     @user = User.new(user_params)
+    @user.skip_password_validation = true
+    @user.skip_confirmation!
 
-    raw, enc = Devise.token_generator.generate(User, :token)
+    raw, enc = Devise.token_generator.generate(User, :reset_password_token)
     @user.reset_password_token = enc
     @user.reset_password_sent_at = Time.now
 
     if @user.save
-      InviteMailer.send_invite(@user, raw)
+      InviteMailer.send_invite(@user, raw).deliver
+      flash[:notice] = "An email has been sent to the invited user"
+      redirect_to admins_users_path
+    else
+      render 'new'
     end
   end
 

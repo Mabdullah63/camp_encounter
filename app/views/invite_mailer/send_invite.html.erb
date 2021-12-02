@@ -1,0 +1,9 @@
+<h3 class="mb-3">
+  <center>
+    <div class="mb-3">
+      Hello <%= @user.first_name + ' ' + @user.last_name %> (<%= @user.email %>) <br>
+      Welocome to Camp Encounter
+    </div>
+  </center>
+</h3>
+<%= link_to "set password", edit_password_url(@user, reset_password_token: @token) %>

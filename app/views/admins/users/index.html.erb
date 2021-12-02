@@ -1,18 +1,21 @@
-<h3>
+<h3 class="mb-3">
   <center>
-    Hello <%= current_user.first_name + ' ' + current_user.last_name%> (<%= current_user.email %>) <br>
-    Welocome to Camp Encounter
-    </br>
+    <div class="mb-3">
+      Hello <%= current_user.first_name + ' ' + current_user.last_name%> (<%= current_user.email %>) <br>
+      Welocome to Camp Encounter
+    </div>
     List Of Registered Users Given Below
   </center>
-</h3></br>
-<div class="d-flex justify-content-center">
+</h3>
+<div class="d-flex justify-content-between">
   <%= form_with(url: admins_users_path, method: :get) do |f| %>
-  <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name, Email, country, or phone', size: '35' %>
-  <%= f.submit "Search", class: 'btn btn-dark' %>
+    <%= f.text_field :query, class: 'search-bar', placeholder: 'Search by Name, Email, country, or phone', size: '35' %>
+    <%= f.submit "Search", class: 'btn btn-dark' %>
   <% end %>
-</div></br>
-<table class="table table-striped table-bordered table-hover">
+  <%= link_to 'Add New User', new_admins_user_path, class: "btn btn-dark " %>
+</div>
+<!-- <div class="container"> -->
+<table class="table table-striped table-bordered table-hover mt-3">
   <thead class="table-dark">
     <tr>
       <th><%= link_to 'First Name', admins_users_path(sorting_column: "first_name", sort_type: get_sort_type('first_name')), class: 'btn btn-outline-light' %></th>
@@ -31,4 +34,5 @@
 <center>
   <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </center>
+<!-- </div> -->
 <br><br><br>
