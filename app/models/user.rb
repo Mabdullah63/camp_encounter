@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  include PgSearch::Model
+
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
 
   FIRST_NAME_COUNTRY_REGEX = (/\A[a-zA-Z]+\z/).freeze
@@ -16,9 +18,15 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: { with: EMAIL_REGEX, message: "Enter valid Email" }
   validates :password, format: { with: PASSWORD_REGEX, message: "Password must contain at least (1) special character, (1) uppercase letter, (8) characters long." }
 
+  pg_search_scope :search, against: [:first_name, :last_name, :email, :created_at, :id, :country, :phone],
+                  using: {
+                    tsearch: { prefix: true, any_word: true}
+                  }
+  
   ADMIN = :admin.freeze
   USER = :standard_user.freeze
   SUPER_ADMIN = :superadmin.freeze
+  
   ROLES = [USER, SUPER_ADMIN, ADMIN]
   enum role: ROLES
 
