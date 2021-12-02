@@ -9,17 +9,23 @@
             <tr>
               <th>Name</th>
               <th>View</th>
+              <th>Edit</th>
             </tr>
           </thead>
           <tbody>
             <% @user_applications.each do |user_application| %>
               <tr>
                 <td>
-                  <%= User.find(user_application.user_id).first_name+' '+User.find(user_application.user_id).last_name+' '+Camp.find(user_application.camp_id).name %>
+                  <%= user_application.user.name+' '+user_application.camp.name %>
                 </td>
                 <td>
                   <%if current_user.admin? %>
                     <%= link_to 'view Application', admins_user_application_path(user_application), class: 'btn btn-outline-dark' %>
+                  <% end %>
+                </td>
+                <td>
+                  <%if current_user.admin? %>
+                    <%= link_to 'Edit Application', edit_admins_user_application_path(user_application), class: 'btn btn-outline-dark' %>
                   <% end %>
                 </td>
               </tr>

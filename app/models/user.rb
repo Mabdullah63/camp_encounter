@@ -15,7 +15,6 @@ class User < ApplicationRecord
   # validates :terms_of_service, acceptance: { message: 'If you do not agree to the terms and service please contact global@campencounter.com'}
   # validates :email, uniqueness: true, format: { with: /(?:\d{10}|\w+@\w+\.\w{2,3})/, message: "Enter valid Email" }
   validates :password, format: { with: /(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}/, message: " Password must contain at least (1) special character, (1) uppercase letter, (8) characters long." },if: :password_required?
-  #pg_search_scope :search, against: [:id, :first_name, :email]
 
   pg_search_scope :search, against: [:first_name, :last_name, :email, :created_at, :id, :country, :phone],
                    using: {
@@ -26,6 +25,10 @@ class User < ApplicationRecord
   SUPER_ADMIN = :superadmin.freeze
   ROLES = [USER, SUPER_ADMIN, ADMIN]
   enum role: ROLES, _default: :user
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
 
   protected
 

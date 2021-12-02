@@ -38,6 +38,6 @@ class UserApplicationsController < ApplicationController
 
   def user_application_params
    params.require(:user_application).permit(:gender, :age, :emergency_contact, :medical_history,
-    :address,  :progress_bar, :insurance, :lunch, :wifi_service, :shirt_size, :food_options, :activity)
+    :address,  :progress_bar, :insurance, :lunch, :wifi_service, :shirt_size, :food_options, :dinner)
   end
 end

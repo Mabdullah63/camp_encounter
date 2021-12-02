@@ -11,15 +11,15 @@
               <tbody>
                 <tr>
                   <th scope="row">Name:</th>
-                  <td><%= "#{current_user.first_name} #{current_user.last_name}" %></td>
+                  <td><%= @user_application.user.name %></td>
                 </tr>
                 <tr>
                   <th scope="row">Email:</th>
-                  <td><%= current_user.email %></td>
+                  <td><%= @user_application.user.email %></td>
                 </tr>
                 <tr>
                   <th scope="row">Phone Number:</th>
-                  <td><%= "#{current_user.country_code} #{current_user.phone}" %></td>
+                  <td><%= "+(#{@user_application.user.country_code}) #{@user_application.user.phone}" %></td>
                 </tr>
                 <tr>
                   <th scope="row">Gender:</th>
@@ -31,11 +31,23 @@
                 </tr>
                 <tr>
                   <th scope="row">Lunch:</th>
-                  <td><%= @user_application.lunch %></td>
+                  <td>
+                    <% if @user_application.lunch %>
+                      yes
+                    <% else %>
+                      No
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Dinner:</th>
-                  <td><%= @user_application.dinner %></td>
+                  <td>
+                    <% if @user_application.dinner %>
+                      yes
+                    <% else %>
+                      No
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Address:</th>
@@ -51,7 +63,13 @@
                 </tr>
                 <tr>
                   <th scope="row">Wifi Service:</th>
-                  <td><%= @user_application.wifi_service %></td>
+                  <td>
+                    <% if @user_application.wifi_service %>
+                      yes
+                    <% else %>
+                      No
+                    <% end %>
+                  </td>
                 </tr>
                 <tr>
                   <th scope="row">Medical History:</th>
